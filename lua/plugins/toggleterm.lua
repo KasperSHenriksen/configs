@@ -2,12 +2,18 @@ return {
     -- amongst your other plugins
     --{ "akinsho/toggleterm.nvim", version = "*", config = true },
     -- or
-    {
-        "akinsho/toggleterm.nvim",
-        version = "*",
-        opts = {
-            vim.keymap.set("n", "<leader>tt", ":ToggleTerm<CR>"),
-            --vim.keymap.set("n", "<leader>e", ":Neotree toggle position=left<CR>")
-        },
+    "akinsho/toggleterm.nvim",
+    version = "*",
+    opts = {
+        vim.keymap.set("n", "<leader>tt", ":ToggleTerm<CR>"),
+        --vim.keymap.set("n", "<leader>e", ":Neotree toggle position=left<CR>")
+    },
+    float_opts = {
+        border = "curved",
+        winblend = 3,
+        highlights = {
+            border = "Normal",
+            background = "Normal",
+        }
     },
 }

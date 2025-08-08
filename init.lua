@@ -28,4 +28,5 @@ require("lazy").setup({
 	require("plugins.toggleterm"),
 	require("plugins.smear-cursor"),
 	require("plugins.neogit"),
+	require("plugins.todo-comments"),
 })
