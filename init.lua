@@ -29,4 +29,46 @@ require("lazy").setup({
 	require("plugins.smear-cursor"),
 	require("plugins.neogit"),
 	require("plugins.todo-comments"),
+	require("plugins.neotest"),
 })
+
+
+-- Key Setup
+local wk = require("which-key")
+wk.add({
+    {"<leader>å", ":ToggleTerm<CR>", desc="Open terminal", mode="n"},
+
+    -- Group: Testing --
+    {"<leader>t", group="Testing"},
+    {"<leader>tt", function() require("neotest").run.run() end, desc="Run nearest test", mode="n"},
+    {"<leader>tf", function() require("neotest").run.run(vim.fn.expand("%")) end, desc="Run test file", mode="n"},
+    {"<leader>to", function() require("neotest").output.open({ enter = true }) end, desc="Run test output", mode="n"},
+    {"<leader>ts", function() require("neotest").summary.toggle() end, desc="Toggle test summary", mode="n"},
+
+    -- Group: Git + Diff --
+    {"<leader>g", group="Git Tools"},
+    {"<leader>gg", ":Neogit<CR>", desc="Neogit", mode="n"},
+
+    {"<leader>d", group="Diff Tools"},
+    {"<leader>do", ":DiffViewOpen<CR>", desc="Diffview ([O]pen)", mode="n"},
+    {"<leader>dc", ":DiffViewClose<CR>", desc="Diffview ([C]lose)", mode="n"},
+    {"<leader>dt", ":diffthis<CR>", desc="Diff [T]his file", mode="n"},
+--vim.keymap.set('n', '<leader>gg', ":Neogit<CR>", { desc = 'Neogit' }),
+  --vim.keymap.set('n', '<leader>gd', ":DiffviewOpen<CR>", { desc = 'Diffview' })
+
+    --t = {
+    --    name = "Testing",
+    --    s = { function() require("neotest").summary.toggle() end, "Toggle test summary" },
+
+    --}
+})
+--wk.add({
+--    t = {
+--        name = "Testing",
+--        t = { function() require("neotest").run.run() end, "Run nearest test" },
+--        f = { function() require("neotest").run.run(vim.fn.expand("%")) end, "Run test file" },
+--        o = { function() require("neotest").output.open({ enter = true }) end, "Open test output" },
+--        s = { function() require("neotest").summary.toggle() end, "Toggle test summary" },
+--
+--    }
+--}, {prefix = "<leader>"})

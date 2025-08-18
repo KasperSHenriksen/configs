@@ -121,3 +121,18 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- Save and load session
 vim.keymap.set('n', '<leader>ss', ':mksession! .session.vim<CR>', { noremap = true, silent = false })
 vim.keymap.set('n', '<leader>sl', ':source .session.vim<CR>', { noremap = true, silent = false })
+
+
+-- Which key --
+--local wk = require("which-key")
+--
+--wk.register({
+--    t = {
+--        name = 'Test',
+--        t = { function() require("neotest").run.run() end, "Run nearest test" },
+--        f = { function() require("neotest").run.run(vim.fn.expand("%")) end, "Run test file" },
+--        o = { function() require("neotest").output.open({ enter = true }) end, "Open test output" },
+--        s = { function() require("neotest").summary.toggle() end, "Toggle test summary" },
+--    }
+--})
+

@@ -8,6 +8,4 @@ return {
     "nvim-telescope/telescope.nvim", -- optional
   },
 
-  vim.keymap.set('n', '<leader>gg', ":Neogit<CR>", { desc = 'Neogit' }),
-  vim.keymap.set('n', '<leader>gd', ":DiffviewOpen<CR>", { desc = 'Diffview' })
 }
