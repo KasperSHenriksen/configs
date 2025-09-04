@@ -13,23 +13,34 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+    -- File Manager --
 	require("plugins.neotree"),
+	--require("plugins.oil"),
+
 	require("plugins.colortheme"),
 	require("plugins.bufferline"),
 	require("plugins.lualine"),
 	require("plugins.treesitter"),
-	require("plugins.telescope"),
+	--require("plugins.telescope"),
 	require("plugins.autocompletion"),
 	require("plugins.lsp"),
-	require("plugins.gitsigns"),
 	require("plugins.alpha"),
-	require("plugins.misc"),
 	require("plugins.uv"),
 	require("plugins.toggleterm"),
+
+    -- Misc --
 	require("plugins.smear-cursor"),
+	require("plugins.misc"),
+
+    -- Git and Test --
+	require("plugins.gitsigns"),
 	require("plugins.neogit"),
 	require("plugins.todo-comments"),
 	require("plugins.neotest"),
+
+    -- Search / Find --
+    require("plugins.fff"),
+    require("plugins.fzf"),
 })
 
 
@@ -53,6 +64,14 @@ wk.add({
     {"<leader>do", ":DiffViewOpen<CR>", desc="Diffview ([O]pen)", mode="n"},
     {"<leader>dc", ":DiffViewClose<CR>", desc="Diffview ([C]lose)", mode="n"},
     {"<leader>dt", ":diffthis<CR>", desc="Diff [T]his file", mode="n"},
+
+    -- Search: FFF & FZF --
+    {"<leader>f", group="Find"},
+    {"<leader>ff", ":FFFFind<CR>", desc="(F)ile", mode="n"},
+    {"<leader>fg", ":FzfLua live_grep_native<CR>", desc="(G)rep", mode="n"},
+
+
+
 --vim.keymap.set('n', '<leader>gg', ":Neogit<CR>", { desc = 'Neogit' }),
   --vim.keymap.set('n', '<leader>gd', ":DiffviewOpen<CR>", { desc = 'Diffview' })
 
