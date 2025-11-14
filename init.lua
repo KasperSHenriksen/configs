@@ -14,11 +14,12 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     -- File Manager --
-	require("plugins.neotree"),
+	--require("plugins.neotree"),
+    require("plugins.fyler"),
 
 	require("plugins.tiny-inline-diagnostic"),
 	require("plugins.colortheme"),
-	require("plugins.bufferline"),
+	--require("plugins.bufferline"),
 	require("plugins.lualine"),
 	require("plugins.treesitter"),
 	--require("plugins.telescope"),
@@ -26,7 +27,7 @@ require("lazy").setup({
 	require("plugins.lsp"),
 	require("plugins.alpha"),
 	require("plugins.uv"),
-	require("plugins.toggleterm"),
+	--require("plugins.toggleterm"),
 
     -- Misc --
 	require("plugins.smear-cursor"),
@@ -47,7 +48,7 @@ require("lazy").setup({
 -- Key Setup
 local wk = require("which-key")
 wk.add({
-    {"<leader>å", ":ToggleTerm<CR>", desc="Open terminal", mode="n"},
+    --{"<leader>å", ":ToggleTerm<CR>", desc="Open terminal", mode="n"},
 
     -- Group: Testing --
     {"<leader>t", group="Testing"},
@@ -65,21 +66,11 @@ wk.add({
     {"<leader>dc", ":DiffViewClose<CR>", desc="Diffview ([C]lose)", mode="n"},
     {"<leader>dt", ":diffthis<CR>", desc="Diff [T]his file", mode="n"},
 
-    -- Search: FFF & FZF --
+    -- Files & Search: FFF & FZF --
     {"<leader>f", group="Find"},
+    {"<leader>fe", ":Fyler kind=float<CR>", desc="(E)xplorer", mode="n"},
     {"<leader>ff", ":FFFFind<CR>", desc="(F)ile", mode="n"},
     {"<leader>fg", ":FzfLua live_grep_native<CR>", desc="(G)rep", mode="n"},
-
-
-
---vim.keymap.set('n', '<leader>gg', ":Neogit<CR>", { desc = 'Neogit' }),
-  --vim.keymap.set('n', '<leader>gd', ":DiffviewOpen<CR>", { desc = 'Diffview' })
-
-    --t = {
-    --    name = "Testing",
-    --    s = { function() require("neotest").summary.toggle() end, "Toggle test summary" },
-
-    --}
 })
 
 -- Yank into system clipboard
