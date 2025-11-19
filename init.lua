@@ -24,7 +24,7 @@ require("lazy").setup({
 	require("plugins.treesitter"),
 	--require("plugins.telescope"),
 	require("plugins.autocompletion"),
-	require("plugins.lsp"),
+    require("plugins.lsp"),
 	require("plugins.alpha"),
 	require("plugins.uv"),
 	--require("plugins.toggleterm"),
@@ -44,6 +44,11 @@ require("lazy").setup({
     require("plugins.fzf"),
 })
 
+-- LSP
+require("mason").setup()
+require("mason-lspconfig").setup({
+    --ensure_installed = { "pyright" },
+})
 
 -- Key Setup
 local wk = require("which-key")
