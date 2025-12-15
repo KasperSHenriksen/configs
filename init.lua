@@ -32,6 +32,7 @@ require("lazy").setup({
     -- Misc --
 	require("plugins.smear-cursor"),
 	require("plugins.misc"),
+    	require('plugins.render_markdown'),
 
     -- Git and Test --
 	require("plugins.gitsigns"),
