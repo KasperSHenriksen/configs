@@ -50,6 +50,10 @@ require("mason").setup()
 require("mason-lspconfig").setup({
     --ensure_installed = { "pyright" },
 })
+-- LSP: Goto definition --
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
+
+
 
 -- Key Setup
 local wk = require("which-key")
