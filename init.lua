@@ -23,7 +23,8 @@ require("lazy").setup({
 	require("plugins.lualine"),
 	require("plugins.treesitter"),
 	--require("plugins.telescope"),
-	require("plugins.autocompletion"),
+	require("plugins.blink"),
+    --require("plugins.autocompletion"),
     require("plugins.lsp"),
 	require("plugins.alpha"),
 	require("plugins.uv"),
@@ -32,17 +33,19 @@ require("lazy").setup({
     -- Misc --
 	require("plugins.smear-cursor"),
 	require("plugins.misc"),
-    	require('plugins.render_markdown'),
+    require('plugins.render_markdown'),
 
     -- Git and Test --
 	require("plugins.gitsigns"),
 	require("plugins.neogit"),
 	require("plugins.todo-comments"),
 	require("plugins.neotest"),
+	require("plugins.codediff"),
 
     -- Search / Find --
     require("plugins.fff"),
     require("plugins.fzf"),
+    require("plugins.namu"),
 })
 
 -- LSP
@@ -51,8 +54,9 @@ require("mason-lspconfig").setup({
     --ensure_installed = { "pyright" },
 })
 -- LSP: Goto definition --
-vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
-vim.keymap.set('n', 'gr', vim.lsp.buf.references)
+vim.keymap.set('n', 'gd', ':FzfLua lsp_definitions<CR>')
+vim.keymap.set('n', 'gD', ':FzfLua lsp_declarations<CR>')
+vim.keymap.set('n', 'gr', ':FzfLua lsp_references<CR>')
 
 
 
@@ -72,12 +76,13 @@ wk.add({
     {"<leader>g", group="Git Tools"},
     {"<leader>gg", ":Neogit<CR>", desc="Neogit", mode="n"},
 
-    {"<leader>d", group="Diff Tools"},
-    {"<leader>do", ":DiffViewOpen<CR>", desc="Diffview ([O]pen)", mode="n"},
-    {"<leader>dc", ":DiffViewClose<CR>", desc="Diffview ([C]lose)", mode="n"},
-    {"<leader>dt", ":diffthis<CR>", desc="Diff [T]his file", mode="n"},
+    --{"<leader>d", group="Diff Tools"},
+    --{"<leader>do", ":DiffViewOpen<CR>", desc="Diffview ([O]pen)", mode="n"},
+    --{"<leader>dc", ":DiffViewClose<CR>", desc="Diffview ([C]lose)", mode="n"},
+    --{"<leader>dd", ":diffthis<CR>", desc="Diff [T]his file", mode="n"},
+    {"<leader>dd", ":CodeDiff<CR>", desc="Diff dir", mode="n"},
 
-    -- Files & Search: FFF & FZF --
+    -- Files & Search --
     {"<leader>f", group="Find"},
     {"<leader>fe", ":Fyler kind=float<CR>", desc="(E)xplorer", mode="n"},
     {"<leader>ff", ":FFFFind<CR>", desc="(F)ile", mode="n"},
@@ -85,16 +90,16 @@ wk.add({
 })
 
 -- Yank into system clipboard
-vim.keymap.set({'n', 'v'}, '<leader>y', '"+y') -- yank motion
-vim.keymap.set({'n', 'v'}, '<leader>Y', '"+Y') -- yank line
+--vim.keymap.set({'n', 'v'}, '<leader>y', '"+y') -- yank motion
+--vim.keymap.set({'n', 'v'}, '<leader>Y', '"+Y') -- yank line
 
 -- Delete into system clipboard
-vim.keymap.set({'n', 'v'}, '<leader>d', '"+d') -- delete motion
-vim.keymap.set({'n', 'v'}, '<leader>D', '"+D') -- delete line
+--vim.keymap.set({'n', 'v'}, '<leader>d', '"+d') -- delete motion
+--vim.keymap.set({'n', 'v'}, '<leader>D', '"+D') -- delete line
 
 -- Paste from system clipboard
-vim.keymap.set('n', '<leader>p', '"+p')  -- paste after cursor
-vim.keymap.set('n', '<leader>P', '"+P')  -- paste before cursor
+--vim.keymap.set('n', '<leader>p', '"+p')  -- paste after cursor
+--vim.keymap.set('n', '<leader>P', '"+P')  -- paste before cursor
 
 --wk.add({
 --    t = {
