@@ -4,7 +4,7 @@ return { -- Highlight, edit, and navigate code
     main = "nvim-treesitter.configs", -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-        ensure_installed = {
+    ensure_installed = {
             "lua",
             "python",
             --'javascript',
