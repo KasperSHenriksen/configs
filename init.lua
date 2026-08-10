@@ -25,6 +25,7 @@ require("nvim-treesitter").install({
     "html",
     "rust",
     "gdscript",
+    "cpp",
 })
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { '<filetype>' },
@@ -137,7 +138,19 @@ vim.keymap.set('n', '<leader>fg', function() require('fff').live_grep() end, { d
 vim.pack.add({
     { src = "https://github.com/bassamsdata/namu.nvim" },
 })
-require("namu").setup()
+require("namu").setup({
+    namu_symbols = {
+        options = {
+          movement = {
+            next = { "<C-j>", "<DOWN>" }, -- Support multiple keys
+            previous = { "<C-k>", "<UP>" }, -- Support multiple keys
+            close = { "<ESC>", 'q' }, -- close mapping
+            select = { "<CR>" }, -- select mapping
+            --preview = true,
+          },
+        },
+    }
+})
 --require("namu").setup({
 --  options = {
 --    movement = {
@@ -146,6 +159,14 @@ require("namu").setup()
 --  },
 --})
 vim.keymap.set("n", "<leader>fs", ":Namu treesitter<cr>", { desc = "Jump to LSP symbol", silent = true })
+
+
+-- Git
+vim.pack.add({"https://github.com/dlyongemallo/diffview-plus.nvim"})
+vim.keymap.set('n', '<leader>g', ":DiffviewOpen<cr>", { desc = 'Open diffview' })
+
+vim.pack.add({"https://github.com/lewis6991/gitsigns.nvim"})
+
 
 
 -- Misc --
